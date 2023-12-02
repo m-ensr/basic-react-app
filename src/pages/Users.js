@@ -1,7 +1,7 @@
 export const users = [
   {
-    username: "deneme",
-    password: "admin2",
+    username: "herhangibiri",
+    password: "admin",
     phoneNumber: "1234567890",
     token: "123",
   },

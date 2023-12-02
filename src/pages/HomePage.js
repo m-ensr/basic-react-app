@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLastLoggedInUser } from "./Users";
+import backgroundImage from './images/main.jpg';
 
 const HomePage = () => {
   const [thought, setThought] = useState("");
@@ -40,89 +41,81 @@ const HomePage = () => {
     }
   };
 
+  const pageStyle = {
+    background: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    paddingLeft: '750px',
+  };
+
+  const dashboardStyle = {
+
+    backgroundColor: '#F1A2D1',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    width: '300px',
+    textAlign: 'center',
+  };
+
+  const thoughtBoxStyle = {
+    marginTop: '20px',
+    padding: '20px',
+    backgroundColor: '#F68ED6',
+    borderRadius: '8px',
+  };
+
+  const thoughtInputStyle = {
+    width: '70%',
+    padding: '10px',
+    marginRight: '10px',
+  };
+
+  const addThoughtButtonStyle = {
+    padding: '10px',
+    cursor: 'pointer',
+  };
+
+  const showButtonStyle = {
+    padding: '10px',
+    cursor: 'pointer',
+  };
+
+  const thoughtsListStyle = {
+    listStyleType: 'none',
+    padding: 0,
+    marginTop: '10px',
+  };
+
+  const thoughtItemStyle = {
+    marginBottom: '5px',
+  };
+
+  const inputContainerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '10px',
+  };
+
   return (
-    <>
-      <style>
-        {`
-          body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-          }
-
-          .dashboard-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-          }
-
-          h2 {
-            color: #333;
-          }
-
-          .user-info {
-            margin-bottom: 15px;
-          }
-
-          .welcome-message {
-            font-size: 18px;
-            margin-bottom: 10px;
-          }
-
-          .thought-box {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-          }
-
-          #thought-input {
-            width: 70%;
-            padding: 10px;
-            margin-right: 10px;
-          }
-
-          .add-thought-button,
-          .show-button {
-            padding: 10px;
-            cursor: pointer;
-          }
-
-          .thoughts-list {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 10px;
-          }
-
-          .thoughts-list li {
-            margin-bottom: 5px;
-          }
-
-          .input-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-          }
-        `}
-      </style>
-      <div className="dashboard-container">
+    <div style={pageStyle}>
+      <div style={dashboardStyle}>
         <h2>Welcome to Your Freespace</h2>
         <div className="user-info">
           <p className="welcome-message">
             You seem to be lost in thoughts today...
           </p>
         </div>
-        <div className="thought-box">
+        <div style={thoughtBoxStyle}>
           <p>How are you feeling? Share your thoughts...</p>
-          <div className="input-container">
+          <div style={inputContainerStyle}>
             <input
               type="text"
               id="thought-input"
@@ -130,28 +123,36 @@ const HomePage = () => {
               value={thought}
               onChange={(e) => setThought(e.target.value)}
               disabled={!inputEnabled}
+              style={thoughtInputStyle}
             />
             {showButton ? (
               <button
                 className="add-thought-button"
                 onClick={handleThoughtSubmit}
+                style={addThoughtButtonStyle}
               >
                 Add
               </button>
             ) : (
-              <button className="show-button" onClick={handleShowButtonClick}>
-                Show Button
+              <button
+                className="show-button"
+                onClick={handleShowButtonClick}
+                style={showButtonStyle}
+              >
+                Knock Knock
               </button>
             )}
           </div>
-          <ul className="thoughts-list">
+          <ul style={thoughtsListStyle}>
             {thoughtsList.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={index} style={thoughtItemStyle}>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkUserExists } from "./Users";
+import backgroundImage from "./images/t1.jpg";
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState("");
@@ -34,15 +35,15 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={{...styles.container, backgroundImage: `url(${backgroundImage})`}}>
       <div style={styles.loginContainer}>
         <div style={styles.loginHeader}>
-          <h1 style={{ margin: 0, color: "#fff" }}>Login</h1>
+          <h1 style={{ margin: 0, color: "#fff" }}>Yo!</h1>
         </div>
         <div style={styles.loginForm}>
           <div style={styles.formGroup}>
             <label htmlFor="username" style={styles.label}>
-              Username:
+               tell me, who are you?
             </label>
             <input
               type="text"
@@ -55,7 +56,7 @@ const LoginPage = ({ onLogin }) => {
           </div>
           <div style={styles.formGroup}>
             <label htmlFor="password" style={styles.label}>
-              Password:
+              how can i sure?
             </label>
             <div style={styles.passwordContainer}>
               <input
@@ -77,14 +78,14 @@ const LoginPage = ({ onLogin }) => {
           </div>
           <div style={styles.formGroup}>
             <button type="button" style={styles.button} onClick={handleLogin}>
-              Login
+            come in
             </button>
           </div>
           {error && <p style={styles.error}>{error}</p>}
           <p style={styles.signUpText}>
-            Don't have an account?{" "}
+          haven't we met yet?{" "}
             <span style={styles.signUpLink} onClick={handleSignUpClick}>
-              Sign up
+            let's meet
             </span>
           </p>
         </div>
@@ -96,21 +97,28 @@ const LoginPage = ({ onLogin }) => {
 const styles = {
   container: {
     display: "flex",
+    opacity: "0.7",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end", 
     height: "100vh",
     margin: 0,
     backgroundColor: "#f5f5f5",
+    backgroundSize: "cover", 
+    backgroundRepeat: "no-repeat",
   },
+  
   loginContainer: {
     backgroundColor: "#fff",
     borderRadius: "8px",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     overflow: "hidden",
     width: "300px",
+    height: "450px",
+    marginRight: "250px",
+    marginTop: "150px",
   },
   loginHeader: {
-    backgroundColor: "#4285f4",
+    backgroundColor: "#271659",
     color: "#fff",
     padding: "20px",
     textAlign: "center",
@@ -123,7 +131,7 @@ const styles = {
   },
   label: {
     display: "block",
-    marginBottom: "8px",
+    marginBottom: "15px",
     fontWeight: "bold",
   },
   input: {
@@ -146,10 +154,10 @@ const styles = {
     background: "none",
     cursor: "pointer",
     fontSize: "14px",
-    color: "#4285f4",
+    color: "#271659",
   },
   button: {
-    backgroundColor: "#4285f4",
+    backgroundColor: "#271659",
     color: "#fff",
     padding: "10px 20px",
     border: "none",

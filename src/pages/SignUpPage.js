@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addUser, users } from './Users';
 import { useNavigate } from 'react-router-dom';
 import { generateJwtToken } from '../utils/JwtUtils';
+import backgroundImage from './images/t2-sign.jpg'; 
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
@@ -37,76 +38,93 @@ const SignUpPage = () => {
   };
 
   const style = {
-    maxWidth: '400px',
+    maxWidth: '600px',
     margin: 'auto',
     padding: '20px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     textAlign: 'center',
   };
 
+  const pageStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  const h1Style = {
+    marginBottom: '20px',
+    color: '#333333',
+  };
+
   return (
-    <div style={style}>
-      <h1>Sign Up</h1>
-      <div style={{ marginBottom: '20px' }}>
-        <label htmlFor="username" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
-          Username:
-        </label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Enter your username"
-          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
-        />
+    <div style={pageStyle}>
+      <div style={style}>
+        <h1 style={h1Style}>Sign Up</h1>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="username" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
+            Username:
+          </label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+            style={{ width: '90%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
+          />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="password" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            style={{ width: '90%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
+          />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="phoneNumber" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
+            Phone Number:
+          </label>
+          <input
+            type="tel"
+            id="phoneNumber"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            placeholder="Enter your phone number"
+            style={{ width: '90%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
+          />
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={handleSignUp}
+            style={{
+              backgroundColor: '#4caf50',
+              color: '#ffffff',
+              padding: '12px 20px',
+              fontSize: '16px',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s',
+            }}
+          >
+            Sign Up
+          </button>
+        </div>
+        {error && <p style={{ color: '#ff0000', marginTop: '10px' }}>{error}</p>}
       </div>
-      <div style={{ marginBottom: '20px' }}>
-        <label htmlFor="password" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
-          Password:
-        </label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter your password"
-          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
-        />
-      </div>
-      <div style={{ marginBottom: '20px' }}>
-        <label htmlFor="phoneNumber" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold', color: '#333333' }}>
-          Phone Number:
-        </label>
-        <input
-          type="tel"
-          id="phoneNumber"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          placeholder="Enter your phone number"
-          style={{ width: '100%', padding: '12px', fontSize: '16px', border: '1px solid #cccccc', borderRadius: '6px', marginTop: '6px' }}
-        />
-      </div>
-      <div>
-        <button
-          type="button"
-          onClick={handleSignUp}
-          style={{
-            backgroundColor: '#4caf50',
-            color: '#ffffff',
-            padding: '12px 20px',
-            fontSize: '16px',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s',
-          }}
-        >
-          Sign Up
-        </button>
-      </div>
-      {error && <p style={{ color: '#ff0000', marginTop: '10px' }}>{error}</p>}
     </div>
   );
 };
